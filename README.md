@@ -1,7 +1,7 @@
 # test
 ## chapter01
-a
+コメント
 ## chapter02
-git
+やり直し
 ## chapter03
-github
+確認
