@@ -17,9 +17,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
     public function userTweets()
     {
         return $this->hasMany(Tweet::class);
+    }
+
+    public function followings()
+    {
+        return $this->belongsToMany(self::class, "follows", "user_id", "following_id")->withTimestamps();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, "follows", "following_id", "user_id")->withTimestamps();
     }
 
     protected $fillable = [
