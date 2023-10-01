@@ -130,5 +130,18 @@ class TweetController extends Controller
         ->get();
     return view('tweet.index', compact('tweets'));
     }
+
+    public function comment($id)
+    {
+        //
+        $tweet = Tweet::find($id);
+        return response()->view('tweet.comment', compact('tweet'));
+    }
+
+    public function send($id)
+    {
+        $tweet = Tweet::find($id);
+        return response()->view('tweet.send', compact('tweet'));
+    }
   
 }
