@@ -17,7 +17,7 @@ class Tweet extends Model
 
   public function comments()
     {
-        return $this->belongsToMany(Comment::class)->withTimestamps();
+        return $this->hasMany('App\Models\Comment');
     }
 
   public static function getAllOrderByUpdated_at()

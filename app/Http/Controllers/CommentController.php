@@ -51,10 +51,13 @@ class CommentController extends Controller
      */
     public function show(string $id)
     {
-        $tweet = Tweet::find($id);
-        $comments = $tweet->comments;
+         // ツイートの情報を取得
+    $tweet = Tweet::findOrFail($id);
 
-        return view('tweet.comment', compact('tweet', 'comments'));
+    // ツイートに紐づくコメントを取得
+    $comments = $tweet->comments;
+
+    return view('tweet.comment', compact('tweet', 'comments'));
     }
 
 
