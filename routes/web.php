@@ -6,6 +6,7 @@ use App\Http\Controllers\TweetController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,10 @@ use App\Http\Controllers\SearchController;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('/tweet/{id}/comment', [TweetController::class, 'comment'])->name('tweet.comment');
-    Route::get('/tweet/{id}/send', [TweetController::class, 'send'])->name('tweet.send');
+    Route::post('/tweets/{tweet}/comments', [CommentController::class, 'store'])->name('comment.store');
+
+    Route::get('/tweet/{tweet}/comment', [CommentController::class, 'show'])->name('comment.show');
+    Route::get('/tweet/{id}/send', [CommentController::class, 'send'])->name('tweet.send');
 
     Route::get('/tweet/search/input', [SearchController::class, 'create'])->name('search.input');
     Route::get('/tweet/search/result', [SearchController::class, 'index'])->name('search.result');
@@ -50,5 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

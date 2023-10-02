@@ -18,7 +18,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     
-    public function userTweets()
+      public function userComments()
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
+     public function userTweets()
     {
         return $this->hasMany(Tweet::class);
     }

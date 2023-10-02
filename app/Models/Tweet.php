@@ -15,6 +15,11 @@ class Tweet extends Model
     'updated_at',
   ];
 
+  public function comments()
+    {
+        return $this->belongsToMany(Comment::class)->withTimestamps();
+    }
+
   public static function getAllOrderByUpdated_at()
   {
     return self::orderBy('updated_at', 'desc')->get();

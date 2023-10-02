@@ -105,7 +105,7 @@
                     </form>
                     @endif
                     <!-- 🔽 コメントボタン -->
-                    <a href="{{ route('tweet.comment',$tweet->id) }}">
+                    <a href="{{ route('comment.show',$tweet->id) }}">
                       <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">
                         <x-primary-button class="ml-3">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
